@@ -5,22 +5,5 @@
   </p>
 </header>
 
-<form id="form" name="colorForm">
-  <input type="text" name="name" [(ngModel)]="iconInput" placeholder="Icon Name" list="iconNames" (change)="change()">
-  <datalist id="iconNames">
-    <ng-container *ngFor="let iconName of iconNames">
-      <!--    optionの中ではmat-iconが表示されなかった-->
-      <option value="{{iconName}}">
-    </ng-container>
-  </datalist>
-  <input type="color" name="color" [(ngModel)]="colorInput" (change)="change()">
-  <hr>
-  <label>
-    背景色
-    <input type="color" name="bgColor" [(ngModel)]="bgColorInput">
-  </label>
-</form>
-
-<div id="icon-view" [ngStyle]="{backgroundColor: bgColor}">
-  <mat-icon [ngStyle]="{color:color}">{{icon}}</mat-icon>
-</div>
+<ci-form [initValue]="formInitIcon" (iconChange)="change($event)"></ci-form>
+<ci-color-icon [icon]="currentIcon.icon" [color]="currentIcon.color" [bgColor]="currentIcon.bgColor"></ci-color-icon>

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {iconNames} from '../iconNames';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {ColorIcon} from '../color-icon';
 
 @Component({
   selector: 'ci-color-screen',
@@ -15,49 +15,43 @@ export class ColorScreenComponent implements OnInit {
   colorInput: string;
   bgColorInput: string;
   iconInput: string;
+  formInitIcon: ColorIcon;
+  currentIcon: ColorIcon;
 
 
-  color: string;
-  bgColor: string;
-  icon: string;
+  constructor(private route: ActivatedRoute, private router: Router) {
+  }
 
-  iconParam$: Observable<string>;
-  colorParam$: Observable<string>;
-  bgColorParam$: Observable<string>;
-
-  iconNames: string[] = iconNames;
-
-  constructor(private route: ActivatedRoute, private router: Router) {}
   ngOnInit(): void {
     this.initForm();
-
-
-    const queryParam$ = this.route.queryParamMap
+    this.route.queryParamMap
       .subscribe(queryParamMap => {
-        this.icon = queryParamMap.get('icon');
-        this.color = queryParamMap.get('color');
-        this.bgColor = queryParamMap.get('bgColor');
+        this.currentIcon = {
+          icon: queryParamMap.get('icon'),
+          color: queryParamMap.get('color'),
+          bgColor: queryParamMap.get('bgColor')
+        };
       });
   }
 
+  //
   private initForm() {
     const initParam = this.route.snapshot.queryParamMap;
-    console.log(initParam);
-    this.colorInput = initParam.get('color') || '#000000';
-    this.bgColorInput = initParam.get('bgColor') || '#ffffff';
-    this.iconInput = initParam.get('icon');
+
+    this.formInitIcon = {
+      color: initParam.get('color') || '#000000',
+      bgColor: initParam.get('bgColor') || '#ffffff',
+      icon: initParam.get('icon'),
+    };
+
   }
 
-  change() {
-    const queryParams: Params = {
-      color: this.colorInput,
-      bgColor: this.bgColorInput,
-      icon: this.iconInput,
-    };
-    this.router.navigate(    [],
+  change(icon: ColorIcon) {
+    console.log(icon);
+    this.router.navigate([],
       {
         relativeTo: this.route,
-        queryParams,
+        queryParams: icon,
         queryParamsHandling: 'merge', // remove to replace all query params by provided
       });
   }

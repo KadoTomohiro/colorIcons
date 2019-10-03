@@ -8,11 +8,15 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import { ColorScreenComponent } from './color-screen/color-screen.component';
 import {AppRoutingModule} from './app-routing.module';
+import { ColorIconComponent } from './color-icon/color-icon.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ColorScreenComponent
+    ColorScreenComponent,
+    ColorIconComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
