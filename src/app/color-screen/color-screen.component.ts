@@ -41,7 +41,7 @@ export class ColorScreenComponent implements OnInit {
   }
 
   change(icon: ColorIcon) {
-    this.router.navigate([],
+    this.router.navigate(['/'],
       {
         relativeTo: this.route,
         queryParams: icon,
