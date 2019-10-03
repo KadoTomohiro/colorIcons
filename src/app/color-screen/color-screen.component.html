@@ -1,0 +1,26 @@
+<header>
+  <h1>Material Icon色変換</h1>
+  <p>
+    アイコン名はこちらから<a href="https://material.io/resources/icons/?icon=description&style=baseline">Material Icons</a>
+  </p>
+</header>
+
+<form id="form" name="colorForm">
+  <input type="text" name="name" [(ngModel)]="iconInput" placeholder="Icon Name" list="iconNames" (change)="change()">
+  <datalist id="iconNames">
+    <ng-container *ngFor="let iconName of iconNames">
+      <!--    optionの中ではmat-iconが表示されなかった-->
+      <option value="{{iconName}}">
+    </ng-container>
+  </datalist>
+  <input type="color" name="color" [(ngModel)]="colorInput" (change)="change()">
+  <hr>
+  <label>
+    背景色
+    <input type="color" name="bgColor" [(ngModel)]="bgColorInput">
+  </label>
+</form>
+
+<div id="icon-view" [ngStyle]="{backgroundColor: bgColor}">
+  <mat-icon [ngStyle]="{color:color}">{{icon}}</mat-icon>
+</div>
