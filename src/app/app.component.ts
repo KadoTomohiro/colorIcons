@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {iconNames} from './iconNames';
 
 @Component({
   selector: 'ci-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'colorIcons';
+
+  color: string;
+  name: string = 'home';
+
+  iconNames: string[] = iconNames;
 }

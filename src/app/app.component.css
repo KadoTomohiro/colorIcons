@@ -1,0 +1,14 @@
+#form {
+  display: inline-block;
+}
+input {
+  font-size: 1em;
+}
+
+#icon-view {
+  display: inline-block;
+  margin: 0.5em;
+  padding: 1.5em;
+  border: solid 1px lightgray;
+}
+
