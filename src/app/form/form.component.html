@@ -1,14 +1,14 @@
-<form name="colorForm">
-  <input type="text" name="name" [(ngModel)]="icon" placeholder="Icon Name" list="iconNames" (change)="onChange()">
+<form name="colorForm" #form="ngForm">
+  <input type="text" name="icon" [(ngModel)]="initValue.icon" placeholder="Icon Name" list="iconNames" (change)="onChange(form)">
   <datalist id="iconNames">
     <ng-container *ngFor="let iconName of iconNames">
       <option value="{{iconName}}">
     </ng-container>
   </datalist>
-  <input type="color" name="color" [(ngModel)]="color" (change)="onChange()">
+  <input type="color" name="color" [(ngModel)]="initValue.color" (change)="onChange(form)">
   <hr>
   <label>
     背景色
-    <input type="color" name="bgColor" [(ngModel)]="bgColor" (change)="onChange()">
+    <input type="color" name="bgColor" [(ngModel)]="initValue.bgColor" (change)="onChange(form)">
   </label>
 </form>

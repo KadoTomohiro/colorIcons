@@ -1,1 +1,18 @@
+section {
+  display: flex;
+  align-items: stretch;
+}
 
+section button {
+  align-self: flex-end;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ci-color-icon {
+  display: inline-block;
+}

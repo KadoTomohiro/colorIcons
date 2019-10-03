@@ -4,6 +4,19 @@
     アイコン名はこちらから<a href="https://material.io/resources/icons/?icon=description&style=baseline">Material Icons</a>
   </p>
 </header>
+<section>
+  <ci-form [initValue]="formInitIcon" (iconChange)="change($event)"></ci-form>
+  <ci-color-icon [icon]="currentIcon.icon" [color]="currentIcon.color" [bgColor]="currentIcon.bgColor"></ci-color-icon>
+  <ci-icon-info [icon]="currentIcon.icon" [color]="currentIcon.color" [bgColor]="currentIcon.bgColor"></ci-icon-info>
+  <button (click)="add()">Add</button>
+</section>
 
-<ci-form [initValue]="formInitIcon" (iconChange)="change($event)"></ci-form>
-<ci-color-icon [icon]="currentIcon.icon" [color]="currentIcon.color" [bgColor]="currentIcon.bgColor"></ci-color-icon>
+
+<hr>
+<ul>
+  <ng-container *ngFor="let icon of iconCollection">
+    <li (click)="select(icon)">
+      <ci-color-icon [icon]="icon.icon" [color]="icon.color" [bgColor]="icon.bgColor"></ci-color-icon>
+    </li>
+  </ng-container>
+</ul>

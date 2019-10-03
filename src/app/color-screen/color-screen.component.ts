@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
-import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ColorIcon} from '../color-icon';
 
 @Component({
@@ -10,14 +8,10 @@ import {ColorIcon} from '../color-icon';
   styleUrls: ['./color-screen.component.css']
 })
 export class ColorScreenComponent implements OnInit {
-
-
-  colorInput: string;
-  bgColorInput: string;
-  iconInput: string;
   formInitIcon: ColorIcon;
   currentIcon: ColorIcon;
 
+  iconCollection: ColorIcon[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router) {
   }
@@ -47,12 +41,21 @@ export class ColorScreenComponent implements OnInit {
   }
 
   change(icon: ColorIcon) {
-    console.log(icon);
     this.router.navigate([],
       {
         relativeTo: this.route,
         queryParams: icon,
         queryParamsHandling: 'merge', // remove to replace all query params by provided
       });
+  }
+
+  add() {
+    this.iconCollection.push(this.currentIcon);
+  }
+
+  select(icon: ColorIcon) {
+    const iconBuffer = Object.assign({}, icon);
+    this.formInitIcon = iconBuffer;
+    this.change(iconBuffer);
   }
 }
