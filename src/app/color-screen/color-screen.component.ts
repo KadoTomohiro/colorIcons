@@ -41,9 +41,8 @@ export class ColorScreenComponent implements OnInit {
   }
 
   change(icon: ColorIcon) {
-    this.router.navigate(['/'],
+    this.router.navigate([],
       {
-        relativeTo: this.route,
         queryParams: icon,
         queryParamsHandling: 'merge', // remove to replace all query params by provided
       });
