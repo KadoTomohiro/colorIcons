@@ -5,7 +5,7 @@
   </p>
 </header>
 
-<div id="form">
+<div id="form" >
   <input type="text" name="name" [(ngModel)]="name" placeholder="Icon Name" list="iconNames">
   <datalist id="iconNames">
     <ng-container *ngFor="let iconName of iconNames">
@@ -14,8 +14,13 @@
     </ng-container>
   </datalist>
   <input type="color" name="color" [(ngModel)]="color">
+  <hr>
+  <label>
+    背景色
+    <input type="color" [(ngModel)]="bgColor">
+  </label>
 </div>
 
-<div id="icon-view">
+<div id="icon-view" [ngStyle]="{backgroundColor: bgColor}">
   <mat-icon [ngStyle]="{color: color}">{{name}}</mat-icon>
 </div>

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {iconNames} from './iconNames';
 
 @Component({
@@ -6,11 +6,15 @@ import {iconNames} from './iconNames';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'colorIcons';
+export class AppComponent implements OnInit{
 
   color: string;
-  name: string = 'home';
+  bgColor: string;
+  name: string;
 
   iconNames: string[] = iconNames;
+
+  ngOnInit(): void {
+    this.bgColor = '#ffffff';
+  }
 }
